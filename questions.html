@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lbng="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>QUESTIONS</title>
+</head>
+<body onload="game()">
+    <div class="questionNumber" id="questionNumber"></div>
+    <div class="container">
+        <div class="questions">
+            <p id="questionOut">exemplo de pergunta</p>
+        </div>
+        <div class="answers">
+            <div class="line">
+                <div class="buttonQ" id="oA" onclick="choose(optionsArray[i].a)"></div>
+                <div class="buttonQ" id="oB" onclick="choose(optionsArray[i].b)"></div>
+            </div>
+            <div class="line">
+                <div class="buttonQ" id="oC" onclick="choose(optionsArray[i].c)"></div>
+                <div class="buttonQ" id="oD" onclick="choose(optionsArray[i].d)"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="./dados.js"></script>
+<script>
+    let i = 0
+    function game(){
+        questionNumber.innerHTML = i + 1
+        questionOut.innerHTML = optionsArray[i].question 
+        oA.innerHTML = optionsArray[i].a
+        oB.innerHTML = optionsArray[i].b
+        oC.innerHTML = optionsArray[i].c
+        oD.innerHTML = optionsArray[i].d
+    }
+
+    function choose(value){
+        console.log(value)
+        if(value == optionsArray[i].answer){
+            i ++
+            if(i == 16){
+                window.location = './win.html'
+            }
+            game()
+        }else{
+            window.location = './error.html'
+        }
+    }
+</script>
